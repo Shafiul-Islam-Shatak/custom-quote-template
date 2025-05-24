@@ -343,6 +343,15 @@
   <p>
    Lead time = {{ template_data.quote.associated_objects.deal.lead_time }} 
   </p>
+      <p>Deal quantity = {{ template_data.quote.associated_objects.deal.deal_quantity }}</p>
+      <p>Packaged As = {{ template_data.quote.associated_objects.deal.packaged_as }}</p>
+      <p>Quantity Pricing = {{ template_data.quote.associated_objects.deal.quantity___pricing }}</p>
+      <p>Incoterms FOB = {{ template_data.quote.associated_objects.deal.incoterms__fob_}}</p>
+      <p>Payment Terms = {{ template_data.quote.associated_objects.deal.payment_terms__text_ }}</p>
+      <p>Deal POC Name = {{ template_data.quote.associated_objects.deal.deal_poc_name.fullname }}</p>
+
+
+
 
 
 <div class="line-items__totals">
