@@ -1,8 +1,8 @@
 <!--
   templateType: quote
   isAvailableForNewContent: true
-  label: My custom quote template
-  screenshotPath: ../images/modern.png
+  label: Modern-Alexis
+  
 -->
 
 {% extends './layouts/base.html' %}
@@ -108,18 +108,26 @@
     </div>
   </div>
 
-  <div class="container comments">
-    <div class="comments-text_wrapper">
-      {% module "comments"
-        label="Comments"
-        path="@hubspot/rich_text"
-        html={{
-          "<h2>" ~ template_translations.comments_from.message ~ " " ~ ptoken_sender_full_name ~ "</h2>" ~
-          ptoken_comments
-        }}
-      %}
+<!-- My custom property data start -->
+
+ <div class="">
+    <div class="">
+
+      <!-- Actual content -->
+<!--       <p>Product NTC = {{ template_data.quote.associated_objects.deal.product__ntc___chemical__purity__particle_size_|default("Not specified") }}</p>
+        <p>
+        Lead Time = {{ template_data.quote.associated_objects.deal.lead_time }}
+      </p>
+      <p>Deal quantity = {{ template_data.quote.associated_objects.deal.deal_quantity|default("Not specified") }}</p>
+      <p>Packaged As = {{ template_data.quote.associated_objects.deal.packaged_as|default("Not specified") }}</p>
+      <p>Quantity Pricing = {{ template_data.quote.associated_objects.deal.quantity___pricing|default("Not specified") }}</p>
+      <p>Incoterms FOB = {{ template_data.quote.associated_objects.deal.incoterms__fob_|default("N/A") }}</p>
+      <p>Payment Terms = {{ template_data.quote.associated_objects.deal.payment_terms__text_|default("Not specified") }}</p>
+      <p>Deal POC Name = {{ template_data.quote.associated_objects.deal.deal_poc_name.fullname|default("Not specified") }}</p> -->
     </div>
   </div>
+<!-- My custom property data end -->
+  
 
   <div class="container line-items">
     {% module "line_items_table"
@@ -146,6 +154,7 @@
   </div>
   
   
+
 
   <div class="container terms">
     {% module "terms"
@@ -196,6 +205,7 @@
       {% module "print" path="../modules/print" %}
     </div>
   </div>
-
+<!--  My all qoute data = 
+ {{template_data.quote.associated_objects.deal}}   -->
 </body>
 {% endblock body %}
