@@ -222,21 +222,43 @@
         {% elif item.column_property == 'name' %}
           <td>
             <span>{{ unit.name|sanitize_html }}</span>
+            
             {% if module.display_payment_starts and is_future_payments %}
               <div class="line-item-future-payment">{{ first_payment_text(unit)|render|sanitize_html }}</div>
             {% endif %}
+         
           </td>
         {% elif item.column_property == 'item_description' %}
           <td>
             <span class="item-name">{{ unit.name|sanitize_html }}</span>
             <div class="line-item-description">{{ unit.description|sanitize_html }}</div>
+            
+            <!--        my custom data      -->
+            {% if template_data.quote.associated_objects.deal.lead_time %}
+            <div class="custom-prop-data">Lead Time: {{ template_data.quote.associated_objects.deal.lead_time }}</div>
+            {% endif %}
+            {% if template_data.quote.associated_objects.deal.packaged_as %}
+            <div class="custom-prop-data">Packaged As: {{ template_data.quote.associated_objects.deal.packaged_as }}</div>
+            {% endif %}
+            {% if template_data.quote.associated_objects.deal.incoterms__fob_ %}
+            <div class="custom-prop-data">Incoterms FOB: {{ template_data.quote.associated_objects.deal.incoterms__fob_ }}</div>
+            {% endif %}
+            {% if template_data.quote.associated_objects.deal.lead_time %}
+            <div class="custom-prop-data">Payment Terms Text: {{ template_data.quote.associated_objects.deal.payment_terms__text_ }}</div>
+            {% endif %}
+            
+            <!--        my custom data end     -->
+
             {% if module.display_payment_starts and is_future_payments %}
               <div class="line-item-future-payment">{{ first_payment_text(unit)|render|sanitize_html }}</div>
             {% endif %}
           </td>
         {% elif item.column_property == 'description' %}
           <td>
-            <div class="line-item-description">{{ unit.description|sanitize_html }}</div>
+            <div class="line-item-description">
+              {{ unit.description|sanitize_html }}
+            </div>
+             
           </td>
         {% elif item.column_property == 'amount' %}
           <td class="{{ cell_print_max_width_class|escape_attr }}">
@@ -336,19 +358,6 @@
     </table>
   </div>
 {% endif %}
-
-  <p>
-   Product NTC = {{ template_data.quote.associated_objects.deal.product__ntc___chemical__purity__particle_size_ }} 
-  </p>
-  <p>
-   Lead time = {{ template_data.quote.associated_objects.deal.lead_time }} 
-  </p>
-      <p>Deal quantity = {{ template_data.quote.associated_objects.deal.deal_quantity }}</p>
-      <p>Packaged As = {{ template_data.quote.associated_objects.deal.packaged_as }}</p>
-      <p>Quantity Pricing = {{ template_data.quote.associated_objects.deal.quantity___pricing }}</p>
-      <p>Incoterms FOB = {{ template_data.quote.associated_objects.deal.incoterms__fob_}}</p>
-      <p>Payment Terms = {{ template_data.quote.associated_objects.deal.payment_terms__text_ }}</p>
-      <p>Deal POC Name = {{ template_data.quote.associated_objects.deal.deal_poc_name.fullname }}</p>
 
 
 
@@ -538,3 +547,19 @@
     </table>
   </div>
 {% endif %}
+
+
+{% require_css %}
+<style>
+  {% scope_css %}
+  
+  .custom-prop-data{
+    font-size: 10px;
+    color: #888b85db;
+    line-height: 160%;
+  }
+  
+  
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
