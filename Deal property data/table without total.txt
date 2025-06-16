@@ -234,17 +234,32 @@
     <div class="line-item-description">{{ unit.description|sanitize_html }}</div>
 
     <!--        my custom data      -->
+    {% if template_data.quote.associated_objects.deal.product__ntc___chemical__purity__particle_size_ %}
+    <div class="custom-prop-data">Product: {{ template_data.quote.associated_objects.deal.product__ntc___chemical__purity__particle_size_ }}</div>
+    {% endif %}
     {% if template_data.quote.associated_objects.deal.lead_time %}
     <div class="custom-prop-data">Lead Time: {{ template_data.quote.associated_objects.deal.lead_time }}</div>
+    {% endif %}
+    {% if template_data.quote.associated_objects.deal.deal_quantity %}
+    <div class="custom-prop-data">Deal Quantity: {{ template_data.quote.associated_objects.deal.deal_quantity }}</div>
     {% endif %}
     {% if template_data.quote.associated_objects.deal.packaged_as %}
     <div class="custom-prop-data">Packaged As: {{ template_data.quote.associated_objects.deal.packaged_as }}</div>
     {% endif %}
+    {% if template_data.quote.associated_objects.deal.quantity___pricing %}
+    <div class="custom-prop-data">Quantity Pricing: {{ template_data.quote.associated_objects.deal.quantity___pricing }}</div>
+    {% endif %}
     {% if template_data.quote.associated_objects.deal.incoterms__fob_ %}
-    <div class="custom-prop-data">Incoterms FOB: {{ template_data.quote.associated_objects.deal.incoterms__fob_ }}</div>
+    <div class="custom-prop-data">Incoterms: {{ template_data.quote.associated_objects.deal.incoterms__fob_ }}</div>
     {% endif %}
     {% if template_data.quote.associated_objects.deal.lead_time %}
-    <div class="custom-prop-data">Payment Terms Text: {{ template_data.quote.associated_objects.deal.payment_terms__text_ }}</div>
+    <div class="custom-prop-data">Payment Terms: {{ template_data.quote.associated_objects.deal.payment_terms__text_ }}</div>
+    {% endif %}
+    {% if template_data.quote.associated_objects.deal.unit_of_measure %}
+    <div class="custom-prop-data">Unit of Measure: {{ template_data.quote.associated_objects.deal.unit_of_measure }}</div>
+    {% endif %}
+    {% if template_data.quote.associated_objects.deal.deal_poc_name %}
+    <div class="custom-prop-data">Deal POC: {{ template_data.quote.associated_objects.deal.deal_poc_name }}</div>
     {% endif %}
 
     <!--        my custom data end     -->
@@ -361,7 +376,7 @@
 
 
 
-    <!-- hiding the total -->
+<!-- hiding the total -->
 
 <!-- <div class="line-items__totals">
   {% if SUB_TOTALS|length > 0 && module.display_subtotals %}
@@ -404,7 +419,7 @@
   {% endif %} -->
 
 
-  
+
 <!--   {%- if ADDITIONAL_FEES|length > 0 && module.display_other_fees -%}
 
   {%- for fee in ADDITIONAL_FEES -%}
@@ -439,12 +454,12 @@
   </div>
   {% endfor %} -->
 
-  {%- endif -%}
+{%- endif -%}
 
 
 
 
-  <!--  {% if module.display_totals %}
+<!--  {% if module.display_totals %}
     <div class="totals__container">
       <div class="line-items__total-name">{{ (FUTURE_PAYMENTS|length > 0 ? module.due_now_title|sanitize_html : module.total_title|sanitize_html) }}</div>
       <div class="dotted__row"></div>
@@ -461,7 +476,7 @@
       {% endif %}
     </div>
   {% endif %}  -->
-  <!-- hiding the total end -->
+<!-- hiding the total end -->
 
 </div>
 
